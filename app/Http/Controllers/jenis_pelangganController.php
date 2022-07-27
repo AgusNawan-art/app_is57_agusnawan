@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\jenis_pelanggan;
 use Illuminate\Http\Request;
 
 class jenis_pelangganController extends Controller
@@ -13,7 +14,9 @@ class jenis_pelangganController extends Controller
      */
     public function index()
     {
-        //
+       $nomor    = 1;
+       $jenis    = jenis_pelanggan::all();
+       return view('page.jenis_pelanggan.index', compact('jenis','nomor'));
     }
 
     /**
@@ -23,7 +26,7 @@ class jenis_pelangganController extends Controller
      */
     public function create()
     {
-        //
+       return view('page.jenis_pelanggan.form');
     }
 
     /**
@@ -34,7 +37,11 @@ class jenis_pelangganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $jenis = new jenis_pelanggan;
+
+       $jenis->jenis_pelanggan = $request->jenis;
+       $jenis->save();
+       return redirect('/jenis_pelanggan');
     }
 
     /**
@@ -45,7 +52,7 @@ class jenis_pelangganController extends Controller
      */
     public function show($id)
     {
-        //
+      //  
     }
 
     /**
@@ -56,8 +63,9 @@ class jenis_pelangganController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+        $jenis = jenis_pelanggan::find($id);
+        return view('page.jenis_pelanggan.edit', compact('jenis'));
+    } 
 
     /**
      * Update the specified resource in storage.
@@ -68,7 +76,10 @@ class jenis_pelangganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $jenis = jenis_pelanggan::find($id);
+        $jenis->jenis_pelanggan = $request->jenis;
+        $jenis->save();
+        return redirect('/jenis_pelanggan');
     }
 
     /**
@@ -79,6 +90,8 @@ class jenis_pelangganController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $jenis = jenis_pelanggan::find($id);
+        $jenis->delete();
+        return redirect('/jenis_pelanggan');
     }
 }

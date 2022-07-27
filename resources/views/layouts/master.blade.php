@@ -23,8 +23,8 @@
   <link rel="stylesheet" href="{{asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
-  <!-- summernote -->
-  <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
+  {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> --}}
+  <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"> 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -32,6 +32,7 @@
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
+
   </div>
 
   <!-- Navbar -->
@@ -136,27 +137,22 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
+              @can('create',App\jenis_pelanggan::class)  <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/jenis_pelanggan" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Simple Tables</p>
+                  <p>Jenis Pelanggan</p>
                 </a>
               </li>
+              @endcan
               <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
+                <a class="nav-link" aria-current="page" href="/pelanggan" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>DataTables</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/tables/jsgrid.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>jsGrid</p>
+                  <p>Pelanggan</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
+          @can('create',App\jenis_pelanggan::class) <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
@@ -164,9 +160,10 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            @endcan
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Simple Tables</p>
                 </a>
@@ -193,7 +190,7 @@
  @yield('content')
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AgusNawan.co.id</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.2.0-rc
@@ -266,7 +263,9 @@ aria-hidden="true">
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('dist/js/demo.js')}}"></script>
+<script src="{{asset('dist/js/demo.js')}}"></script>  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js
+    "></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
 </body>

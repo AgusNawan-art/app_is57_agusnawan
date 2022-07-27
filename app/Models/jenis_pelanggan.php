@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class jenis_pelanggan extends Model
 {
-    use HasFactory;
+    public function pelanggans(){
+        return $this->belongsTo(pelanggan::class);
+    }
 }
